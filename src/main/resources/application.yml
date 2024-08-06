@@ -1,1 +1,10 @@
-spring.application.name=learn
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/book_review
+    username: postgres
+    password: superuser
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

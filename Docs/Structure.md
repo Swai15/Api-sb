@@ -25,7 +25,7 @@ com.example.bookreviewapi
 │   └── ReviewRepository.java
 │
 ├── service
-│   └── BookService.java
+│   └── com.bookreviewapi.learn.services.BookService.java
 │   └── ReviewService.java
 │   └── BookApiService.java
 │

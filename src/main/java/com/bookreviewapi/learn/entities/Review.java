@@ -1,9 +1,6 @@
-package com.bookreviewapi.learn.entity;
+package com.bookreviewapi.learn.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Review {
@@ -11,31 +8,33 @@ public class Review {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  private Long bookId;
   private String reviewText;
   private int rating;
+
+  @ManyToOne
+  @JoinColumn(name = "book_id", nullable = false)
+  private Book book;
+
 
   public Review() {
   }
 
-  public Review(Long id, Long bookId, String reviewText, int rating){
+  public Review(Long id, String reviewText, int rating){
     this.id = id;
-    this.bookId = bookId;
     this.reviewText = reviewText;
     this.rating = rating;
   }
 
+  public Book getBook() {
+    return book;
+  }
+
+  public void setBook(Book book) {
+    this.book = book;
+  }
+
   public Long getId() {
     return id;
-  }
-
-  public Long getBookId () {
-    return bookId;
-  }
-
-  public void setBookId(Long bookId) {
-    this.bookId = bookId;
   }
 
   public String getReviewText() {

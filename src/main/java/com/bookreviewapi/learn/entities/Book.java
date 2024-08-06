@@ -1,9 +1,8 @@
-package com.bookreviewapi.learn.entity;
+package com.bookreviewapi.learn.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Book {
@@ -11,11 +10,13 @@ public class Book {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
   private String title;
   private String author;
   private String genre;
   private Integer publicationYear;
+
+  @OneToMany(mappedBy = "book")
+  private List<Review> reviews;
 
   public Book() {
   }
@@ -26,6 +27,14 @@ public class Book {
     this.author = author;
     this.genre = genre;
     this.publicationYear = publicationYear;
+  }
+
+  public List<Review> getReviews(){
+    return reviews;
+  }
+
+  public void setReviews(List<Review> reviews) {
+    this.reviews = reviews;
   }
 
   public Long getId() {
