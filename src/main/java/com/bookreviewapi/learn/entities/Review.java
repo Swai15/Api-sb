@@ -1,5 +1,6 @@
 package com.bookreviewapi.learn.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +14,7 @@ public class Review {
 
   @ManyToOne
   @JoinColumn(name = "book_id", nullable = false)
+  @JsonBackReference
   private Book book;
 
 

@@ -2,9 +2,7 @@ package com.bookreviewapi.learn.controllers;
 
 import com.bookreviewapi.learn.entities.Book;
 import com.bookreviewapi.learn.services.BookService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +19,11 @@ public class BookController {
   @GetMapping
   public List<Book> getAllBooks() {
     return bookService.findAllBooks();
+  }
+
+  @PostMapping
+  public Book saveBook(@RequestBody Book book) {
+    return bookService.saveBook(book);
   }
 
 

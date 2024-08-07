@@ -1,5 +1,6 @@
 package com.bookreviewapi.learn.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class Book {
   private Integer publicationYear;
 
   @OneToMany(mappedBy = "book")
+  @JsonManagedReference
   private List<Review> reviews;
 
   public Book() {

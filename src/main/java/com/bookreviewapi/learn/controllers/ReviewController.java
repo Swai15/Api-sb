@@ -2,8 +2,7 @@ package com.bookreviewapi.learn.controllers;
 
 import com.bookreviewapi.learn.entities.Review;
 import com.bookreviewapi.learn.services.ReviewService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +16,14 @@ public class ReviewController {
     this.reviewService = reviewService;
   }
 
+  @GetMapping
   public List<Review> findAllReviews() {
     return reviewService.findAllReviews();
+  }
+
+  @PostMapping
+  public Review saveReview(@RequestBody Review review){
+    return reviewService.saveReview(review);
   }
 
 
